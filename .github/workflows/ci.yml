@@ -1,0 +1,23 @@
+name: Build extension
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out repo and set up web-ext for building extension
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --global web-ext
+
+      # Lint and build extension
+      - run: web-ext lint
+      - run: web-ext build
+
+      # Create release on github for extension
+      - run: echo "TAG=$(date +%Y-%m-%d)-$GITHUB_SHA" >> "$GITHUB_ENV"
+      - run: echo "$TAG"
+      - run: ls
