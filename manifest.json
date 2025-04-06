@@ -14,5 +14,12 @@
       "matches": ["*://*.disneyplus.com/*"],
       "js": ["src/disneyplus.js"]
     }
-  ]
+  ],
+
+  "browser_specific_settings": {
+  "gecko": {
+    "id": "firefox-streaming-autoskipper@loven.dev",
+    "strict_min_version": "0.0.1"
+  }
+}
 }
