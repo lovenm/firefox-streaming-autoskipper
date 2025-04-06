@@ -17,7 +17,11 @@ jobs:
       - run: web-ext lint
       - run: web-ext build
 
+      # Set name for tag to be released
+      - run: echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
+      - run: echo "TAG=$(date +%Y-%m-%d)-$SHORT_SHA" >> "$GITHUB_ENV"
+
       # Create release on github for extension
-      - run: echo "TAG=$(date +%Y-%m-%d)-$GITHUB_SHA" >> "$GITHUB_ENV"
       - run: echo "$TAG"
       - run: ls
+      - run: ls web-ext-artifacts
