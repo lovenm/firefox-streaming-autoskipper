@@ -23,3 +23,5 @@ jobs:
 
       # Create release on github for extension
       - run: gh release create "$TAG" --title "$TAG" --notes "" ./web-ext-artifacts/*.zip
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
