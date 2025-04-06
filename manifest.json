@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "firefox-streaming-autoskipper",
+  "version": "0.0.1",
+
+  "description": "Automatically skips to next episode and recaps on video streaming services.",
+
+  "icons": {
+    "48": "icons/skip-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.disneyplus.com/*"],
+      "js": ["src/disneyplus.js"]
+    }
+  ]
+}
